@@ -16,7 +16,7 @@ export function LyricsPanel() {
     if (!currentTrack?.lyricsSynced) return null
     try {
       const parsed = JSON.parse(currentTrack.lyricsSynced)
-      return Array.isArray(parsed) ? parsed : null
+      return Array.isArray(parsed) ? (parsed as SyncedLyricLine[]) : null
     } catch {
       return null
     }

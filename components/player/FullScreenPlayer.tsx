@@ -11,11 +11,8 @@ import {
   Shuffle,
   Repeat,
   Repeat1,
-  Heart,
   ListMusic,
   Mic2,
-  Volume2,
-  VolumeX,
 } from 'lucide-react'
 import { usePlayerStore } from '../../stores/usePlayerStore'
 import { ProgressBar } from './ProgressBar'

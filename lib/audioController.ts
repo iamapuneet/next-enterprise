@@ -1,4 +1,4 @@
-import { Track, PlaybackRepeatMode } from '../types/music'
+import { Track } from '../types/music'
 
 type AudioCallback = {
   onTimeUpdate: (currentTime: number) => void
