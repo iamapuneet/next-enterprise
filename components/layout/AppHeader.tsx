@@ -49,7 +49,7 @@ export function AppHeader({ onToggleSidebar }: AppHeaderProps) {
           <div className="w-7 h-7 rounded-full bg-linear-to-tr from-[#FF4B4B] to-[#FF8585] flex items-center justify-center">
             <Music2 className="w-3.5 h-3.5 text-white fill-white" />
           </div>
-          <span className="font-bold text-white text-sm">NAD</span>
+          <span className="font-bold text-white text-sm">OSHO</span>
         </Link>
       </div>
 
@@ -113,10 +113,10 @@ export function AppHeader({ onToggleSidebar }: AppHeaderProps) {
             >
               <div className="px-3 py-2 border-b border-white/5 mb-1">
                 <p className="font-semibold text-sm truncate">Puneet</p>
-                <p className="text-xs text-neutral-400 truncate">puneet@nadmusic.com</p>
+                <p className="text-xs text-neutral-400 truncate">puneet@oshoworld.com</p>
                 <div className="mt-2 inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#FF4B4B]/15 text-[#FF4B4B] text-[11px] font-medium">
                   <Sparkles className="w-3 h-3" />
-                  NAD Music Premium
+                  Osho Discourses Member
                 </div>
               </div>
 
@@ -143,7 +143,7 @@ export function AppHeader({ onToggleSidebar }: AppHeaderProps) {
               <DropdownMenu.Separator className="h-px bg-white/5 my-1" />
 
               <DropdownMenu.Item
-                onClick={() => alert('NAD Music account signed in.')}
+                onClick={() => alert('Osho Player account signed in.')}
                 className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-[#FF4B4B] hover:bg-neutral-800 cursor-pointer transition outline-hidden"
               >
                 <LogOut className="w-4 h-4" />

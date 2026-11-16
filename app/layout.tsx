@@ -3,8 +3,8 @@ import type { Metadata } from 'next'
 import { AppShell } from '../components/layout/AppShell'
 
 export const metadata: Metadata = {
-  title: 'NAD Music — Premium Music Streaming',
-  description: 'A complete, production-quality music streaming platform inspired by YouTube Music with persistent playback, discover, explore, and lyrics.',
+  title: 'Osho Player — Audio Discourses & Meditation',
+  description: 'A complete, high-fidelity audio discourse streaming platform for Osho discourses, Upanishads, Gita, Zen, and meditation with ambient background sound.',
 }
 
 export default function RootLayout({

@@ -76,10 +76,10 @@ export function AppSidebar({ isOpen = true, onClose }: AppSidebarProps) {
             </div>
             <div className="flex flex-col">
               <span className="font-bold tracking-tight text-white text-base leading-none">
-                NAD <span className="text-[#FF4B4B]">Music</span>
+                OSHO <span className="text-[#FF4B4B]">Player</span>
               </span>
               <span className="text-[10px] tracking-wider text-neutral-400 uppercase mt-0.5 font-medium">
-                Streaming
+                Discourses & Dhyan
               </span>
             </div>
           </Link>

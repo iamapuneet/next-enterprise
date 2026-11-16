@@ -64,16 +64,15 @@ export default function HomePage() {
     loadData()
   }, [])
 
-  // Filter tracks by mood if not All
+  // Filter tracks by mood or category
   const displayedQuickPicks = quickPicks.filter((t) => {
     if (selectedMood === 'All') return true
-    if (selectedMood === 'Focus' || selectedMood === 'Relax') {
-      return t.genres?.includes('chill')
-    }
-    if (selectedMood === 'Energize' || selectedMood === 'Workout' || selectedMood === 'Party') {
-      return t.genres?.includes('electronic') || t.genres?.includes('pop')
-    }
-    return true
+    const s = selectedMood.toLowerCase()
+    return (
+      t.title.toLowerCase().includes(s) ||
+      t.albumTitle?.toLowerCase().includes(s) ||
+      t.genres?.some((g) => g.toLowerCase().includes(s))
+    )
   })
 
   const handlePlayQuickAll = () => {
@@ -179,8 +178,8 @@ export default function HomePage() {
 
       {/* Trending Music */}
       <MusicCarousel
-        title="Trending on NAD Music"
-        subtitle="Chartbusters with millions of streams"
+        title="Trending on Osho Player"
+        subtitle="Most listened Hindi and English discourses"
         onPlayAll={handlePlayTrendingAll}
       >
         {trending.map((track) => (
@@ -190,10 +189,10 @@ export default function HomePage() {
         ))}
       </MusicCarousel>
 
-      {/* Popular Albums */}
+      {/* Popular Discourse Series */}
       <MusicCarousel
-        title="Popular Albums & EPs"
-        subtitle="Top studio albums streaming now"
+        title="Complete Discourse Series"
+        subtitle="Full multi-part discourses from Osho World"
       >
         {albums.map((album) => (
           <div key={album.id} className="w-48 shrink-0">
@@ -202,10 +201,10 @@ export default function HomePage() {
         ))}
       </MusicCarousel>
 
-      {/* Popular Artists */}
+      {/* Masters & Teachers */}
       <MusicCarousel
-        title="Top Artists"
-        subtitle="Most followed voices on NAD Music"
+        title="Featured Master"
+        subtitle="Discourses and guidance by Osho"
       >
         {artists.map((artist) => (
           <div key={artist.id} className="w-44 shrink-0">
