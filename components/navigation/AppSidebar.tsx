@@ -22,6 +22,7 @@ import { cn } from '../../lib/utils'
 import { musicService } from '../../services/musicService'
 import { Playlist } from '../../types/music'
 import { CreatePlaylistDialog } from '../dialogs/CreatePlaylistDialog'
+import { OshoLogo } from '../common/OshoLogo'
 
 interface AppSidebarProps {
   isOpen?: boolean
@@ -70,15 +71,15 @@ export function AppSidebar({ isOpen = true, onClose }: AppSidebarProps) {
       >
         {/* Brand Header */}
         <div className="h-16 flex items-center justify-between px-6 border-b border-white/5 shrink-0">
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-8 h-8 rounded-full bg-linear-to-tr from-[#FF4B4B] to-[#FF8585] flex items-center justify-center shadow-lg shadow-[#FF4B4B]/20 group-hover:scale-105 transition">
-              <Music2 className="w-4 h-4 text-white fill-white" />
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="group-hover:scale-105 transition-transform duration-300">
+              <OshoLogo size={32} />
             </div>
             <div className="flex flex-col">
               <span className="font-bold tracking-tight text-white text-base leading-none">
-                OSHO <span className="text-[#FF4B4B]">Player</span>
+                OSHO <span className="text-amber-400">Player</span>
               </span>
-              <span className="text-[10px] tracking-wider text-neutral-400 uppercase mt-0.5 font-medium">
+              <span className="text-[10px] tracking-wider text-amber-200/60 uppercase mt-0.5 font-medium">
                 Discourses & Dhyan
               </span>
             </div>

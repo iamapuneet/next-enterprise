@@ -73,7 +73,7 @@ export function FullScreenPlayer() {
       {/* Top Header Controls */}
       <div className="relative z-10 flex items-center justify-between w-full">
         <div className="flex items-center gap-2">
-          <span className="text-xs uppercase font-bold tracking-widest text-[#FF4B4B] bg-[#FF4B4B]/15 px-3 py-1 rounded-full border border-[#FF4B4B]/20">
+          <span className="text-xs uppercase font-bold tracking-widest text-amber-400 bg-amber-500/15 px-3 py-1 rounded-full border border-amber-500/30">
             Playing From Osho Player
           </span>
         </div>

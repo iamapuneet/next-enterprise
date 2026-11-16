@@ -16,6 +16,7 @@ import {
 } from 'lucide-react'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import { SearchBar } from '../search/SearchBar'
+import { OshoLogo } from '../common/OshoLogo'
 
 interface AppHeaderProps {
   onToggleSidebar?: () => void
@@ -46,10 +47,8 @@ export function AppHeader({ onToggleSidebar }: AppHeaderProps) {
         </button>
 
         <Link href="/" className="flex items-center gap-2 md:hidden">
-          <div className="w-7 h-7 rounded-full bg-linear-to-tr from-[#FF4B4B] to-[#FF8585] flex items-center justify-center">
-            <Music2 className="w-3.5 h-3.5 text-white fill-white" />
-          </div>
-          <span className="font-bold text-white text-sm">OSHO</span>
+          <OshoLogo size={26} />
+          <span className="font-bold text-white text-sm tracking-tight">OSHO</span>
         </Link>
       </div>
 
