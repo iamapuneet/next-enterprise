@@ -39,7 +39,7 @@ export default function HistoryPage() {
     const updated = history.filter((t) => t.id !== trackId)
     setHistory(updated)
     try {
-      localStorage.setItem('nad_play_history', JSON.stringify(updated))
+      localStorage.setItem('osho_play_history', JSON.stringify(updated))
     } catch (e) {
       console.error(e)
     }

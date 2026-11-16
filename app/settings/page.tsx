@@ -128,7 +128,7 @@ export default function SettingsPage() {
           <div className="w-5 h-5 rounded-full bg-[#FF4B4B] flex items-center justify-center">
             <Music2 className="w-3 h-3 text-white fill-white" />
           </div>
-          <span>NAD Music • Enterprise Edition</span>
+          <span>Osho Player • Discourses & Dhyan Edition</span>
         </div>
         <span>Version 1.0.0</span>
       </section>

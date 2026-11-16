@@ -32,8 +32,8 @@ export const usePlayerStore = create<PlayerState>((set, get) => {
     })
   }
 
-  const initialQueue = Array.isArray(MOCK_TRACKS) ? MOCK_TRACKS : []
-  const initialTrack = initialQueue.length > 0 ? initialQueue[0] : null
+  const initialQueue: Track[] = Array.isArray(MOCK_TRACKS) ? MOCK_TRACKS : []
+  const initialTrack: Track | null = (initialQueue.length > 0 && initialQueue[0]) ? initialQueue[0] : null
 
   return {
     currentTrack: initialTrack,

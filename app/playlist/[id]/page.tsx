@@ -96,7 +96,7 @@ export default function PlaylistPage({ params }: { params: Promise<{ id: string 
             </h1>
 
             <p className="text-sm text-neutral-300 font-medium">
-              Curated by <span className="text-white">{playlist.userName || 'NAD Music'}</span>
+              Curated by <span className="text-white">{playlist.userName || 'Osho World'}</span>
             </p>
 
             <p className="text-xs text-neutral-400 font-mono">
