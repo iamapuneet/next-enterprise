@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { Track, PlayerState, PlaybackRepeatMode } from '../types/music'
 import { audioController } from '../lib/audioController'
+import { bgAudioController } from '../lib/bgAudioController'
 import { MOCK_TRACKS } from '../data/mockMusicData'
 import { musicService } from '../services/musicService'
 
@@ -53,6 +54,11 @@ export const usePlayerStore = create<PlayerState>((set, get) => {
     isFullScreen: false,
     isMiniPlayer: false,
 
+    // Background Ambient Sound State (Hans Zimmer - Interstellar)
+    isBgSoundEnabled: true,
+    bgVolume: 0.18, // Default low volume (18%)
+    isBgMuted: false,
+
     playTrack: (track: Track, newQueue?: Track[]) => {
       const q = newQueue && newQueue.length > 0 ? newQueue : get().queue
       let idx = q.findIndex((t) => t.id === track.id)
@@ -74,6 +80,9 @@ export const usePlayerStore = create<PlayerState>((set, get) => {
       })
 
       audioController.loadAndPlay(track)
+      if (get().isBgSoundEnabled && !get().isBgMuted) {
+        bgAudioController.play()
+      }
       musicService.recordHistory(track)
     },
 
@@ -144,7 +153,7 @@ export const usePlayerStore = create<PlayerState>((set, get) => {
     },
 
     togglePlay: () => {
-      const { isPlaying, currentTrack, queue, playTrack } = get()
+      const { isPlaying, currentTrack, queue, playTrack, isBgSoundEnabled, isBgMuted } = get()
       if (!currentTrack) {
         if (queue.length > 0 && queue[0]) {
           playTrack(queue[0])
@@ -154,9 +163,13 @@ export const usePlayerStore = create<PlayerState>((set, get) => {
 
       if (isPlaying) {
         audioController.pause()
+        bgAudioController.pause()
         set({ isPlaying: false })
       } else {
         audioController.play()
+        if (isBgSoundEnabled && !isBgMuted) {
+          bgAudioController.play()
+        }
         set({ isPlaying: true })
       }
     },
@@ -174,6 +187,7 @@ export const usePlayerStore = create<PlayerState>((set, get) => {
         // End of queue reached
         set({ isPlaying: false })
         audioController.pause()
+        bgAudioController.pause()
       }
     },
 
@@ -289,6 +303,37 @@ export const usePlayerStore = create<PlayerState>((set, get) => {
 
     closeDrawers: () => {
       set({ isQueueOpen: false, isLyricsOpen: false })
+    },
+
+    // Background Sound Actions
+    toggleBgSound: () => {
+      const { isBgSoundEnabled, isPlaying, isBgMuted } = get()
+      const nextState = !isBgSoundEnabled
+      set({ isBgSoundEnabled: nextState })
+      bgAudioController.setEnabled(nextState, isPlaying && !isBgMuted)
+    },
+
+    setBgVolume: (volume: number) => {
+      const clamped = Math.max(0, Math.min(1, volume))
+      set({ bgVolume: clamped, isBgMuted: clamped === 0 })
+      bgAudioController.setVolume(clamped)
+      bgAudioController.setMuted(clamped === 0)
+    },
+
+    toggleBgMute: () => {
+      const { isBgMuted, bgVolume, isPlaying, isBgSoundEnabled } = get()
+      if (isBgMuted) {
+        const restored = bgVolume === 0 ? 0.18 : bgVolume
+        set({ isBgMuted: false, bgVolume: restored })
+        bgAudioController.setMuted(false)
+        bgAudioController.setVolume(restored)
+        if (isPlaying && isBgSoundEnabled) {
+          bgAudioController.play()
+        }
+      } else {
+        set({ isBgMuted: true })
+        bgAudioController.setMuted(true)
+      }
     },
   }
 })

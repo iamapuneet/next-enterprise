@@ -17,6 +17,7 @@ import {
 import { usePlayerStore } from '../../stores/usePlayerStore'
 import { ProgressBar } from './ProgressBar'
 import { VolumeControl } from './VolumeControl'
+import { BackgroundSoundControl } from './BackgroundSoundControl'
 import { formatTime } from '../../lib/utils'
 
 export function FullScreenPlayer() {
@@ -78,6 +79,8 @@ export function FullScreenPlayer() {
         </div>
 
         <div className="flex items-center gap-3">
+          <BackgroundSoundControl />
+
           <button
             type="button"
             onClick={toggleLyrics}

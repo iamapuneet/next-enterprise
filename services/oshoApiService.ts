@@ -148,15 +148,39 @@ export const oshoApiService = {
     }
   },
 
+  async getMasterCategories(): Promise<
+    Array<{
+      id: string
+      title: string
+      slug: string
+      image: string
+      countSeries: number
+    }>
+  > {
+    const data = await this.fetchPageData('audio-category-home-page-hindi')
+    const items = data?.items || []
+    return items.map((it: any) => ({
+      id: it.slug || it._id,
+      title: it.title,
+      slug: it.slug,
+      image: formatOshoMediaUrl(it.image),
+      countSeries: it.countSeries || 1,
+    }))
+  },
+
   async getFeaturedTracks(): Promise<Track[]> {
     // Load top tracks from preloaded datasets
     const series1 = await this.getSeries('adhyatam-upanishad-by-osho-1-17')
     const series2 = await this.getSeries('010-agyat-ki-aur-1-7')
-    const series3 = await this.getSeries('ajhun-chet-ganwar-by-osho-1-21')
+    const series3 = await this.getSeries('anahad-mein-bisram-by-osho-1-10')
+    const series4 = await this.getSeries('jas-panihar-dhare-sir-gagar-by-osho-01-11')
+    const series5 = await this.getSeries('ajhun-chet-ganwar-by-osho-1-21')
 
-    const t1 = series1?.tracks?.slice(0, 5) || []
+    const t1 = series1?.tracks?.slice(0, 4) || []
     const t2 = series2?.tracks?.slice(0, 3) || []
     const t3 = series3?.tracks?.slice(0, 3) || []
+    const t4 = series4?.tracks?.slice(0, 3) || []
+    const t5 = series5?.tracks?.slice(0, 2) || []
 
     // Fetch full description for track 1
     const detail = await this.getTrack('adhyatam-upanishad-01')
@@ -164,6 +188,6 @@ export const oshoApiService = {
       t1[0].lyrics = detail.lyrics
     }
 
-    return [...t1, ...t2, ...t3]
+    return [...t1, ...t2, ...t3, ...t4, ...t5]
   },
 }

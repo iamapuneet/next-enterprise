@@ -100,6 +100,11 @@ export interface PlayerState {
   isFullScreen: boolean
   isMiniPlayer: boolean
 
+  // Background Ambient Sound State
+  isBgSoundEnabled: boolean
+  bgVolume: number
+  isBgMuted: boolean
+
   // Player Actions
   playTrack: (track: Track, newQueue?: Track[]) => void
   playNext: (track: Track) => void
@@ -125,4 +130,9 @@ export interface PlayerState {
   toggleFullScreen: () => void
   toggleMiniPlayer: () => void
   closeDrawers: () => void
+
+  // Background Sound Actions
+  toggleBgSound: () => void
+  setBgVolume: (volume: number) => void
+  toggleBgMute: () => void
 }

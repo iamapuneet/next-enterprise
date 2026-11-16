@@ -23,6 +23,7 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import { usePlayerStore } from '../../stores/usePlayerStore'
 import { ProgressBar } from './ProgressBar'
 import { VolumeControl } from './VolumeControl'
+import { BackgroundSoundControl } from './BackgroundSoundControl'
 import { musicService } from '../../services/musicService'
 import { formatTime, cn } from '../../lib/utils'
 
@@ -249,8 +250,11 @@ export function BottomPlayer() {
           </div>
         </div>
 
-        {/* Right Section: Lyrics, Queue, Volume, FullScreen */}
-        <div className="flex items-center justify-end gap-2.5 w-1/4 max-w-[280px]">
+        {/* Right Section: BG Ambient Sound, Lyrics, Queue, Volume, FullScreen */}
+        <div className="flex items-center justify-end gap-2.5 w-1/3 max-w-[340px]">
+          {/* Ambient Background Sound Toggle & Slider */}
+          <BackgroundSoundControl />
+
           <button
             type="button"
             onClick={toggleLyrics}

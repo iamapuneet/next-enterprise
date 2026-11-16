@@ -1069,5 +1069,412 @@
       }
     ],
     "totalItems": 16
+  },
+  "audio-category-home-page-hindi": {
+    "total": [
+      {
+        "total": 35
+      }
+    ],
+    "items": [
+      {
+        "_id": "663c6cd5948fef7da6124274",
+        "title": "Krishna (कृष्ण)",
+        "slug": "audio-master-krishna",
+        "image": "uploads/no_image.png",
+        "countSeries": 18,
+        "images": [
+          "uploads/no_image.png",
+          "uploads/no_image.png",
+          "uploads/no_image.png",
+          "uploads/no_image.png",
+          "uploads/no_image.png"
+        ]
+      },
+      {
+        "_id": "663c6d65948fef7da61242ec",
+        "title": "Shiv (शिव)",
+        "slug": "audio-master-shiv",
+        "image": "uploads/no_image.png",
+        "countSeries": 1,
+        "images": [
+          "uploads/no_image.png"
+        ]
+      },
+      {
+        "_id": "663c6e65948fef7da61242ff",
+        "title": "Zen Sufi (क्षॆन सूफ़ी)",
+        "slug": "audio-master-zen-sufi",
+        "image": "uploads/no_image.png",
+        "countSeries": 3,
+        "images": [
+          "uploads/no_image.png",
+          "uploads/200px-BBBT_sml.jpg",
+          "uploads/no_image.png"
+        ]
+      },
+      {
+        "_id": "663c6f8e948fef7da612434e",
+        "title": "Kabir (कबीर)",
+        "slug": "audio-master-kabir",
+        "image": "uploads/no_image.png",
+        "countSeries": 3,
+        "images": [
+          "uploads/no_image.png",
+          "uploads/no_image.png",
+          "uploads/no_image.png"
+        ]
+      },
+      {
+        "_id": "663c7183948fef7da6124361",
+        "title": "Nanak (नानक)",
+        "slug": "audio-master-nanak",
+        "image": "uploads/no_image.png",
+        "countSeries": 1,
+        "images": [
+          "uploads/no_image.png"
+        ]
+      },
+      {
+        "_id": "663c7209948fef7da6124398",
+        "title": "Dadu (दादू)",
+        "slug": "audio-master-dadu",
+        "image": "uploads/no_image.png",
+        "countSeries": 2,
+        "images": [
+          "uploads/no_image.png",
+          "uploads/no_image.png"
+        ]
+      },
+      {
+        "_id": "663c72d428824f5abddfb9bf",
+        "title": "Adi Shankara (आदि शंकराचार्य)",
+        "slug": "audio-master--adi-shankara",
+        "image": "uploads/no_image.png",
+        "countSeries": 1,
+        "images": [
+          "uploads/200px-Bhaj_Govindam_1976_cover-1.jpg"
+        ]
+      },
+      {
+        "_id": "663c732c28824f5abddfb9d2",
+        "title": "Upanishad (उपनिषद)",
+        "slug": "audio-master-upanishad",
+        "image": "uploads/no_image.png",
+        "countSeries": 6,
+        "images": [
+          "uploads/no_image.png",
+          "uploads/no_image.png",
+          "uploads/no_image.png",
+          "uploads/no_image.png",
+          "uploads/adhyatma-upanishad-osho.jpg"
+        ]
+      },
+      {
+        "_id": "663c73a328824f5abddfb9d9",
+        "title": "Lao Tzu (लाओ- सू)",
+        "slug": "audio-master-lao-tzu",
+        "image": "uploads/no_image.png",
+        "countSeries": 1,
+        "images": [
+          "uploads/no_image.png"
+        ]
+      },
+      {
+        "_id": "663c73e528824f5abddfb9ec",
+        "title": "Buddha (बुद्ध)",
+        "slug": "audio-master-buddha",
+        "image": "uploads/no_image.png",
+        "countSeries": 1,
+        "images": [
+          "uploads/200px-Es_Dhammo_Sanantano_vol-10_cover_1991.jpg"
+        ]
+      },
+      {
+        "_id": "663c740c28824f5abddfb9ff",
+        "title": "Narad (नारद)",
+        "slug": "audio-master-narad",
+        "image": "uploads/no_image.png",
+        "countSeries": 1,
+        "images": [
+          "uploads/no_image.png"
+        ]
+      },
+      {
+        "_id": "663c747828824f5abddfba12",
+        "title": "Mahavir (महावीर)",
+        "slug": "audio-master-mahavir",
+        "image": "uploads/no_image.png",
+        "countSeries": 3,
+        "images": [
+          "uploads/no_image.png",
+          "uploads/no_image.png",
+          "uploads/no_image.png"
+        ]
+      },
+      {
+        "_id": "663c74a728824f5abddfba25",
+        "title": "Yari (यारी)",
+        "slug": "audio-master-yari",
+        "image": "uploads/no_image.png",
+        "countSeries": 1,
+        "images": [
+          "uploads/download-2.jpg"
+        ]
+      },
+      {
+        "_id": "663c74e428824f5abddfba38",
+        "title": "Dariyadas (दरियादास (बिहारवाले))",
+        "slug": "audio-master-dariyadas",
+        "image": "uploads/no_image.png",
+        "countSeries": 1,
+        "images": [
+          "uploads/no_image.png"
+        ]
+      },
+      {
+        "_id": "663c750428824f5abddfba4b",
+        "title": "Laal (लाल)",
+        "slug": "audio-master-laal",
+        "image": "uploads/no_image.png",
+        "countSeries": 1,
+        "images": [
+          "uploads/no_image.png"
+        ]
+      },
+      {
+        "_id": "663c753828824f5abddfba60",
+        "title": "Bhikha (भीखा)",
+        "slug": "audio-master-bhikha",
+        "image": "uploads/no_image.png",
+        "countSeries": 1,
+        "images": [
+          "uploads/200px-Guru_Partap_Sadh_Ki_Sangati_2-1.jpg"
+        ]
+      }
+    ],
+    "homePageData": {
+      "_id": "663cb5763eda84ee2c2e9408",
+      "pageType": "audio-master-hindi"
+    },
+    "parentSlug": {
+      "_id": "663cbc170c293a604038858f",
+      "slug": "audio-hindi-home"
+    },
+    "category_type": "category",
+    "pageCategory": "master",
+    "language": "hindi"
+  },
+  "anahad-mein-bisram-by-osho-1-10": {
+    "categoryData": {
+      "_id": "663b2999642f72069a88a496",
+      "language": "hindi",
+      "slug": "anahad-mein-bisram-by-osho-1-10",
+      "title": "Anahad Mein Bisram (अनहद में बिसराम) #1-10",
+      "category_type": "series",
+      "category_api": "series",
+      "mainSlug": "audio-series-home-hindi"
+    },
+    "listData": [
+      {
+        "_id": "6626559fd26d4da463e870cd",
+        "duration": "01:47:50",
+        "imageFile": "uploads/download-2.jpg",
+        "title": "Anahad Mein Bisram 01",
+        "audio_index": 1,
+        "slug": "anahad-mein-bisram-01",
+        "file": "/wp-content/uploads/2020/11/Hindi%20Audio/OSHO-Anhad_Main_Bisram_01.mp3"
+      },
+      {
+        "_id": "662655a0d26d4da463e870d1",
+        "duration": "01:25:52",
+        "imageFile": "uploads/download-2.jpg",
+        "title": "Anahad Mein Bisram 02",
+        "audio_index": 2,
+        "slug": "anahad-mein-bisram-02",
+        "file": "/wp-content/uploads/2020/11/Hindi%20Audio/OSHO-Anhad_Main_Bisram_02.mp3"
+      },
+      {
+        "_id": "662655a0d26d4da463e870d5",
+        "duration": "01:17:45",
+        "imageFile": "uploads/download-2.jpg",
+        "title": "Anahad Mein Bisram 03",
+        "audio_index": 3,
+        "slug": "anahad-mein-bisram-03",
+        "file": "/wp-content/uploads/2020/11/Hindi%20Audio/OSHO-Anhad_Main_Bisram_03.mp3"
+      },
+      {
+        "_id": "662655a0d26d4da463e870d9",
+        "duration": "01:29:27",
+        "imageFile": "uploads/download-2.jpg",
+        "title": "Anahad Mein Bisram 04",
+        "audio_index": 4,
+        "slug": "anahad-mein-bisram-04",
+        "file": "/wp-content/uploads/2020/11/Hindi%20Audio/OSHO-Anhad_Main_Bisram_04.mp3"
+      },
+      {
+        "_id": "662655a1d26d4da463e870dd",
+        "duration": "02:09:23",
+        "imageFile": "uploads/download-2.jpg",
+        "title": "Anahad Mein Bisram 05",
+        "audio_index": 5,
+        "slug": "anahad-mein-bisram-05",
+        "file": "/wp-content/uploads/2020/11/Hindi%20Audio/OSHO-Anhad_Main_Bisram_05.mp3"
+      },
+      {
+        "_id": "662655a1d26d4da463e870e1",
+        "duration": "01:22:01",
+        "imageFile": "uploads/download-2.jpg",
+        "title": "Anahad Mein Bisram 06",
+        "audio_index": 6,
+        "slug": "anahad-mein-bisram-06",
+        "file": "/wp-content/uploads/2020/11/Hindi%20Audio/OSHO-Anhad_Main_Bisram_06.mp3"
+      },
+      {
+        "_id": "662655a2d26d4da463e870e5",
+        "duration": "01:40:33",
+        "imageFile": "uploads/download-2.jpg",
+        "title": "Anahad Mein Bisram 07",
+        "audio_index": 7,
+        "slug": "anahad-mein-bisram-07",
+        "file": "/wp-content/uploads/2020/11/Hindi%20Audio/OSHO-Anhad_Main_Bisram_07.mp3"
+      },
+      {
+        "_id": "662655a2d26d4da463e870e9",
+        "duration": "01:18:43",
+        "imageFile": "uploads/download-2.jpg",
+        "title": "Anahad Mein Bisram 08",
+        "audio_index": 8,
+        "slug": "anahad-mein-bisram-08",
+        "file": "/wp-content/uploads/2020/11/Hindi%20Audio/OSHO-Anhad_Main_Bisram_08.mp3"
+      },
+      {
+        "_id": "662655a3d26d4da463e870ed",
+        "duration": "01:40:47",
+        "imageFile": "uploads/download-2.jpg",
+        "title": "Anahad Mein Bisram 09",
+        "audio_index": 9,
+        "slug": "anahad-mein-bisram-09",
+        "file": "/wp-content/uploads/2020/11/Hindi%20Audio/OSHO-Anhad_Main_Bisram_09.mp3"
+      },
+      {
+        "_id": "662655a3d26d4da463e870f1",
+        "duration": "01:28:46",
+        "imageFile": "uploads/download-2.jpg",
+        "title": "Anahad Mein Bisram 10",
+        "audio_index": 10,
+        "slug": "anahad-mein-bisram-10",
+        "file": "/wp-content/uploads/2020/11/Hindi%20Audio/OSHO-Anhad_Main_Bisram_10.mp3"
+      }
+    ],
+    "total": 10,
+    "mainLangHomeSlug": "audio-hindi-home",
+    "pageType": "audio"
+  },
+  "jas-panihar-dhare-sir-gagar-by-osho-01-11": {
+    "categoryData": {
+      "_id": "663b2999642f72069a88a510",
+      "language": "hindi",
+      "slug": "jas-panihar-dhare-sir-gagar-by-osho-01-11",
+      "title": "Jas Panihar Dhare Sir Gagar # 01-11",
+      "category_type": "series",
+      "category_api": "series",
+      "mainSlug": "audio-series-home-hindi"
+    },
+    "listData": [
+      {
+        "_id": "6626574ad26d4da463e87d77",
+        "duration": "01:42:21",
+        "imageFile": "uploads/pics_1713897522194_no_image.png",
+        "title": "Jas Panihar Dhare Sir Gagar 01",
+        "audio_index": 1,
+        "slug": "jas-panihar-dhare-sir-gagar-01",
+        "file": "/wp-content/uploads/2020/11/Hindi%20Audio/OSHO-Jas_Panihar_Dhare_Sir_Gagar_01.mp3"
+      },
+      {
+        "_id": "6626574bd26d4da463e87d7b",
+        "duration": "01:43:33",
+        "imageFile": "uploads/pics_1713897522194_no_image.png",
+        "title": "Jas Panihar Dhare Sir Gagar 02",
+        "audio_index": 2,
+        "slug": "jas-panihar-dhare-sir-gagar-02",
+        "file": "/wp-content/uploads/2020/11/Hindi%20Audio/OSHO-Jas_Panihar_Dhare_Sir_Gagar_02.mp3"
+      },
+      {
+        "_id": "6626574bd26d4da463e87d7f",
+        "duration": "01:22:40",
+        "imageFile": "uploads/pics_1713897522194_no_image.png",
+        "title": "Jas Panihar Dhare Sir Gagar 03",
+        "audio_index": 3,
+        "slug": "jas-panihar-dhare-sir-gagar-03",
+        "file": "/wp-content/uploads/2020/11/Hindi%20Audio/OSHO-Jas_Panihar_Dhare_Sir_Gagar_03.mp3"
+      },
+      {
+        "_id": "6626574cd26d4da463e87d83",
+        "duration": "01:52:37",
+        "imageFile": "uploads/pics_1713897522194_no_image.png",
+        "title": "Jas Panihar Dhare Sir Gagar 04",
+        "audio_index": 4,
+        "slug": "jas-panihar-dhare-sir-gagar-04",
+        "file": "/wp-content/uploads/2020/11/Hindi%20Audio/OSHO-Jas_Panihar_Dhare_Sir_Gagar_04.mp3"
+      },
+      {
+        "_id": "6626574cd26d4da463e87d87",
+        "duration": "01:45:39",
+        "imageFile": "uploads/pics_1713897522194_no_image.png",
+        "title": "Jas Panihar Dhare Sir Gagar 05",
+        "audio_index": 5,
+        "slug": "jas-panihar-dhare-sir-gagar-05",
+        "file": "/wp-content/uploads/2020/11/Hindi%20Audio/OSHO-Jas_Panihar_Dhare_Sir_Gagar_05.mp3"
+      },
+      {
+        "_id": "6626574dd26d4da463e87d8b",
+        "duration": "01:42:33",
+        "imageFile": "uploads/pics_1713897522194_no_image.png",
+        "title": "Jas Panihar Dhare Sir Gagar 06",
+        "audio_index": 6,
+        "slug": "jas-panihar-dhare-sir-gagar-06",
+        "file": "/wp-content/uploads/2020/11/Hindi%20Audio/OSHO-Jas_Panihar_Dhare_Sir_Gagar_06.mp3"
+      },
+      {
+        "_id": "6626574dd26d4da463e87d8f",
+        "duration": "01:50:54",
+        "imageFile": "uploads/pics_1713897522194_no_image.png",
+        "title": "Jas Panihar Dhare Sir Gagar 07",
+        "audio_index": 7,
+        "slug": "jas-panihar-dhare-sir-gagar-07",
+        "file": "/wp-content/uploads/2020/11/Hindi%20Audio/OSHO-Jas_Panihar_Dhare_Sir_Gagar_07.mp3"
+      },
+      {
+        "_id": "6626574ed26d4da463e87d93",
+        "duration": "01:46:52",
+        "imageFile": "uploads/pics_1713897522194_no_image.png",
+        "title": "Jas Panihar Dhare Sir Gagar 08",
+        "audio_index": 8,
+        "slug": "jas-panihar-dhare-sir-gagar-08",
+        "file": "/wp-content/uploads/2020/11/Hindi%20Audio/OSHO-Jas_Panihar_Dhare_Sir_Gagar_08.mp3"
+      },
+      {
+        "_id": "6626574ed26d4da463e87d97",
+        "duration": "01:37:23",
+        "imageFile": "uploads/pics_1713897522194_no_image.png",
+        "title": "Jas Panihar Dhare Sir Gagar 09",
+        "audio_index": 9,
+        "slug": "jas-panihar-dhare-sir-gagar-09",
+        "file": "/wp-content/uploads/2020/11/Hindi%20Audio/OSHO-Jas_Panihar_Dhare_Sir_Gagar_09.mp3"
+      },
+      {
+        "_id": "6626574ed26d4da463e87d9b",
+        "duration": "01:39:28",
+        "imageFile": "uploads/pics_1713897522194_no_image.png",
+        "title": "Jas Panihar Dhare Sir Gagar 10",
+        "audio_index": 10,
+        "slug": "jas-panihar-dhare-sir-gagar-10",
+        "file": "/wp-content/uploads/2020/11/Hindi%20Audio/OSHO-Jas_Panihar_Dhare_Sir_Gagar_10.mp3"
+      }
+    ],
+    "total": 11,
+    "mainLangHomeSlug": "audio-hindi-home",
+    "pageType": "audio"
   }
 }

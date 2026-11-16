@@ -3,14 +3,16 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { musicService } from '../../services/musicService'
+import { oshoApiService } from '../../services/oshoApiService'
 import { Track, Album, Artist, Genre } from '../../types/music'
 import { TrackRow } from '../../components/music/TrackRow'
 import { AlbumCard } from '../../components/music/AlbumCard'
 import { ArtistCard } from '../../components/music/ArtistCard'
-import { Compass, Flame, Sparkles, Radio } from 'lucide-react'
+import { Compass, Flame, Sparkles, Radio, BookOpen } from 'lucide-react'
 
 export default function ExplorePage() {
   const [genres, setGenres] = useState<Genre[]>([])
+  const [masterCategories, setMasterCategories] = useState<any[]>([])
   const [trending, setTrending] = useState<Track[]>([])
   const [albums, setAlbums] = useState<Album[]>([])
   const [artists, setArtists] = useState<Artist[]>([])
@@ -19,13 +21,15 @@ export default function ExplorePage() {
   useEffect(() => {
     async function loadExplore() {
       try {
-        const [genreData, trendData, albumData, artistData] = await Promise.all([
+        const [genreData, masterData, trendData, albumData, artistData] = await Promise.all([
           musicService.getGenres(),
+          oshoApiService.getMasterCategories(),
           musicService.getTrending(),
           musicService.getNewReleases(),
           musicService.getPopularArtists(),
         ])
         setGenres(genreData)
+        setMasterCategories(masterData)
         setTrending(trendData)
         setAlbums(albumData)
         setArtists(artistData)
@@ -99,6 +103,41 @@ export default function ExplorePage() {
           ))}
         </div>
       </section>
+
+      {/* Osho Master Categories (16 Masters: Krishna, Shiv, Kabir, Nanak, Upanishad, Buddha...) */}
+      {masterCategories.length > 0 && (
+        <section>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+              <BookOpen className="w-5 h-5 text-[#FF4B4B]" />
+              Osho Discourse Masters & Mystics
+            </h2>
+            <span className="text-xs text-neutral-400 font-mono">
+              {masterCategories.length} Categories
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+            {masterCategories.map((cat) => (
+              <Link
+                key={cat.id}
+                href={`/search?q=${encodeURIComponent(cat.title.split(' ')[0] || cat.title)}`}
+                className="group p-3 rounded-2xl bg-[#1B1B1B]/60 hover:bg-[#1B1B1B] border border-white/5 hover:border-white/10 transition-all duration-200 flex flex-col items-center text-center"
+              >
+                <div className="w-16 h-16 rounded-full bg-linear-to-tr from-[#FF4B4B]/20 to-[#FF8585]/30 border border-[#FF4B4B]/30 flex items-center justify-center text-white mb-2.5 shadow-md group-hover:scale-110 transition-transform">
+                  <BookOpen className="w-6 h-6 text-[#FF4B4B]" />
+                </div>
+                <h3 className="font-semibold text-xs text-white truncate w-full group-hover:text-[#FF4B4B] transition">
+                  {cat.title}
+                </h3>
+                <span className="text-[10px] text-neutral-400 mt-0.5 font-mono">
+                  {cat.countSeries} Series
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Trending Songs Section */}
       <section>
