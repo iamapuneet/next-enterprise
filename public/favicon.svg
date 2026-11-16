@@ -1,0 +1,47 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="32" cy="32" r="32" fill="#0E0E0E" />
+  <circle cx="32" cy="32" r="28" fill="url(#fav-glow)" opacity="0.45" />
+  <path
+    d="M32 9C19.2975 9 9 19.2975 9 32C9 44.7025 19.2975 55 32 55C43.087 55 52.3403 47.1953 54.5696 36.828"
+    stroke="url(#fav-enso)"
+    stroke-width="4.5"
+    stroke-linecap="round"
+  />
+  <path
+    d="M21 32C21 25.9249 25.9249 21 32 21"
+    stroke="url(#fav-enso)"
+    stroke-width="2.8"
+    stroke-linecap="round"
+    opacity="0.85"
+  />
+  <path
+    d="M32 43C38.0751 43 43 38.0751 43 32"
+    stroke="url(#fav-enso)"
+    stroke-width="2.8"
+    stroke-linecap="round"
+    opacity="0.85"
+  />
+  <circle cx="32" cy="32" r="4.8" fill="url(#fav-core)" />
+  <defs>
+    <radialGradient
+      id="fav-glow"
+      cx="0"
+      cy="0"
+      r="1"
+      gradientUnits="userSpaceOnUse"
+      gradientTransform="translate(32 32) scale(28)"
+    >
+      <stop stop-color="#F59E0B" stop-opacity="0.5" />
+      <stop offset="1" stop-color="#B45309" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="fav-enso" x1="9" y1="9" x2="55" y2="55" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FDE68A" />
+      <stop offset="0.4" stop-color="#F59E0B" />
+      <stop offset="1" stop-color="#D97706" />
+    </linearGradient>
+    <linearGradient id="fav-core" x1="28" y1="28" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFBEB" />
+      <stop offset="1" stop-color="#F59E0B" />
+    </linearGradient>
+  </defs>
+</svg>
