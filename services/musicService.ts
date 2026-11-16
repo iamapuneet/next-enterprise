@@ -1,67 +1,64 @@
 import {
-  MOCK_TRACKS,
-  MOCK_ALBUMS,
-  MOCK_ARTISTS,
-  MOCK_PLAYLISTS,
-  MOCK_GENRES,
-  MOOD_CATEGORIES,
+  OSHO_GENRES,
+  OSHO_MOOD_CATEGORIES,
+  OSHO_PLAYLISTS,
 } from '../data/mockMusicData'
 import { Track, Artist, Album, Playlist, Genre } from '../types/music'
 import { oshoApiService, OSHO_ARTIST } from './oshoApiService'
 
 // In-memory / localStorage state persistence for client interactions
 const getStoredLikes = (): string[] => {
-  if (typeof window === 'undefined') return ['track-1', 'track-2', 'track-4', 'track-6', 'track-8']
+  if (typeof window === 'undefined') return ['adhyatam-upanishad-01', 'ashtavakra-maha-geeta-01']
   try {
-    const saved = localStorage.getItem('nad_liked_tracks')
-    return saved ? (JSON.parse(saved) as string[]) : ['track-1', 'track-2', 'track-4', 'track-6', 'track-8']
+    const saved = localStorage.getItem('osho_liked_tracks')
+    return saved ? (JSON.parse(saved) as string[]) : ['adhyatam-upanishad-01', 'ashtavakra-maha-geeta-01']
   } catch {
-    return ['track-1', 'track-2', 'track-4', 'track-6', 'track-8']
+    return ['adhyatam-upanishad-01', 'ashtavakra-maha-geeta-01']
   }
 }
 
 const saveStoredLikes = (ids: string[]) => {
   if (typeof window === 'undefined') return
   try {
-    localStorage.setItem('nad_liked_tracks', JSON.stringify(ids))
+    localStorage.setItem('osho_liked_tracks', JSON.stringify(ids))
   } catch (e) {
     console.error(e)
   }
 }
 
 const getStoredPlaylists = (): Playlist[] => {
-  if (typeof window === 'undefined') return MOCK_PLAYLISTS
+  if (typeof window === 'undefined') return OSHO_PLAYLISTS
   try {
-    const saved = localStorage.getItem('nad_custom_playlists')
-    return saved ? (JSON.parse(saved) as Playlist[]) : MOCK_PLAYLISTS
+    const saved = localStorage.getItem('osho_custom_playlists')
+    return saved ? (JSON.parse(saved) as Playlist[]) : OSHO_PLAYLISTS
   } catch {
-    return MOCK_PLAYLISTS
+    return OSHO_PLAYLISTS
   }
 }
 
 const saveStoredPlaylists = (playlists: Playlist[]) => {
   if (typeof window === 'undefined') return
   try {
-    localStorage.setItem('nad_custom_playlists', JSON.stringify(playlists))
+    localStorage.setItem('osho_custom_playlists', JSON.stringify(playlists))
   } catch (e) {
     console.error(e)
   }
 }
 
 const getStoredHistory = (): Track[] => {
-  if (typeof window === 'undefined') return MOCK_TRACKS.slice(0, 4)
+  if (typeof window === 'undefined') return []
   try {
-    const saved = localStorage.getItem('nad_play_history')
-    return saved ? (JSON.parse(saved) as Track[]) : MOCK_TRACKS.slice(0, 4)
+    const saved = localStorage.getItem('osho_play_history')
+    return saved ? (JSON.parse(saved) as Track[]) : []
   } catch {
-    return MOCK_TRACKS.slice(0, 4)
+    return []
   }
 }
 
 const saveStoredHistory = (tracks: Track[]) => {
   if (typeof window === 'undefined') return
   try {
-    localStorage.setItem('nad_play_history', JSON.stringify(tracks))
+    localStorage.setItem('osho_play_history', JSON.stringify(tracks))
   } catch (e) {
     console.error(e)
   }
@@ -80,43 +77,29 @@ export const musicService = {
     }
   }> {
     const oshoTracks = await oshoApiService.getFeaturedTracks()
-    const oshoFirst = oshoTracks[0]
-
-    if (oshoFirst) {
-      return {
-        banner: {
-          title: 'Adhyatam Upanishad (अध्यात्म उपनिषद्)',
-          subtitle: 'Featured Discourse • Spiritual & Meditation',
-          description: 'ॐ, शं नो मित्रः शं वरुणः... Deep dive into the timeless wisdom of the Upanishads with Osho.',
-          coverUrl: oshoFirst.coverUrl,
-          artistName: 'Osho (ओशो)',
-          track: oshoFirst,
-        },
-      }
-    }
+    const oshoFirst = oshoTracks[0]!
 
     return {
       banner: {
-        title: 'Neon Horizon — Deluxe Edition',
-        subtitle: 'Featured Release • Synthwave & Electronic',
-        description: 'Immerse yourself into cinematic retro electro, driving drums, and night skylines.',
-        coverUrl: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=1600&auto=format&fit=crop&q=80',
-        artistName: 'The Midnight Echo',
-        track: MOCK_TRACKS[0]!,
+        title: 'Adhyatam Upanishad (अध्यात्म उपनिषद्)',
+        subtitle: 'Featured Discourse • Upanishad & Meditation',
+        description: 'ॐ, शं नो मित्रः शं वरुणः... Deep dive into the timeless wisdom of the Upanishads with Osho.',
+        coverUrl: oshoFirst.coverUrl,
+        artistName: 'Osho (ओशो)',
+        track: oshoFirst,
       },
     }
   },
 
   async getMoodCategories(): Promise<string[]> {
-    return MOOD_CATEGORIES
+    return OSHO_MOOD_CATEGORIES
   },
 
   async getQuickPicks(): Promise<Track[]> {
     const likes = getStoredLikes()
     const oshoTracks = await oshoApiService.getFeaturedTracks()
 
-    const combined = [...oshoTracks, ...MOCK_TRACKS]
-    return combined.map((t) => ({
+    return oshoTracks.map((t) => ({
       ...t,
       isLiked: likes.includes(t.id),
     }))
@@ -128,77 +111,56 @@ export const musicService = {
   },
 
   async getNewReleases(): Promise<Album[]> {
-    const oshoSeries = await oshoApiService.getSeriesList()
-    const featuredOshoSeries = oshoSeries.slice(0, 6)
-    return [...featuredOshoSeries, ...MOCK_ALBUMS]
+    return oshoApiService.getSeriesList()
   },
 
   async getPopularArtists(): Promise<Artist[]> {
-    return [OSHO_ARTIST, ...MOCK_ARTISTS]
+    return [OSHO_ARTIST]
   },
 
   async getPlaylists(): Promise<Playlist[]> {
-    return getStoredPlaylists()
+    const playlists = getStoredPlaylists()
+    const allTracks = await this.getQuickPicks()
+
+    return playlists.map((p) => ({
+      ...p,
+      tracks: p.tracks && p.tracks.length > 0 ? p.tracks : allTracks.slice(0, 5),
+    }))
   },
 
   // Explore & Categories
   async getGenres(): Promise<Genre[]> {
-    const oshoGenre: Genre = {
-      id: 'spiritual',
-      name: 'Osho Discourses',
-      color: '#B45309',
-      imageUrl: 'https://oshoworld.com/uploads/adhyatma-upanishad-osho.jpg',
-    }
-    return [oshoGenre, ...MOCK_GENRES]
+    return OSHO_GENRES
   },
 
   // Details
   async getArtistById(id: string): Promise<Artist | null> {
-    if (id === 'artist-osho' || id === 'osho') {
-      const oshoTracks = await oshoApiService.getFeaturedTracks()
-      const oshoSeries = await oshoApiService.getSeriesList()
-      return {
-        ...OSHO_ARTIST,
-        tracks: oshoTracks,
-        albums: oshoSeries.slice(0, 12),
-      }
-    }
-
-    const artist = MOCK_ARTISTS.find((a) => a.id === id) || MOCK_ARTISTS[0]!
-    const tracks = (await this.getQuickPicks()).filter((t) => t.artistId === artist.id || t.artistName === artist.name)
-    const albums = MOCK_ALBUMS.filter((al) => al.artistId === artist.id || al.artistName === artist.name)
-
+    const oshoTracks = await oshoApiService.getFeaturedTracks()
+    const oshoSeries = await oshoApiService.getSeriesList()
     return {
-      ...artist,
-      tracks: tracks.length > 0 ? tracks : (await this.getQuickPicks()).slice(0, 5),
-      albums,
+      ...OSHO_ARTIST,
+      tracks: oshoTracks,
+      albums: oshoSeries.slice(0, 16),
     }
   },
 
   async getAlbumById(id: string): Promise<Album | null> {
-    // Check if it's an Osho Series
     const oshoSeries = await oshoApiService.getSeries(id)
     if (oshoSeries) {
       return oshoSeries
     }
 
-    const album = MOCK_ALBUMS.find((a) => a.id === id) || MOCK_ALBUMS[0]!
-    const tracks = (await this.getQuickPicks()).filter((t) => t.albumId === album.id)
-    const albumTracks = tracks.length > 0 ? tracks : (await this.getQuickPicks()).slice(0, 4)
-    const totalDuration = albumTracks.reduce((acc, curr) => acc + curr.duration, 0)
-
-    return {
-      ...album,
-      tracks: albumTracks,
-      totalDuration,
-    }
+    // Fallback: load first series
+    return oshoApiService.getSeries('adhyatam-upanishad-by-osho-1-17')
   },
 
   async getPlaylistById(id: string): Promise<Playlist | null> {
-    const playlists = getStoredPlaylists()
+    const playlists = await this.getPlaylists()
     const playlist = playlists.find((p) => p.id === id) || playlists[0]!
     const likes = getStoredLikes()
-    const tracks = (playlist.tracks ?? MOCK_TRACKS).map((t) => ({
+    const allTracks = await this.getQuickPicks()
+
+    const tracks = (playlist.tracks && playlist.tracks.length > 0 ? playlist.tracks : allTracks).map((t) => ({
       ...t,
       isLiked: likes.includes(t.id),
     }))
@@ -227,12 +189,12 @@ export const musicService = {
     const allTracks = await this.getQuickPicks()
     const allAlbums = await this.getNewReleases()
     const allArtists = await this.getPopularArtists()
-    const allPlaylists = getStoredPlaylists()
+    const allPlaylists = await this.getPlaylists()
 
     if (!q) {
       return {
         songs: allTracks.slice(0, 8),
-        albums: allAlbums,
+        albums: allAlbums.slice(0, 8),
         artists: allArtists,
         playlists: allPlaylists,
       }
@@ -293,7 +255,8 @@ export const musicService = {
 
   async getLikedTracks(): Promise<Track[]> {
     const likedIds = getStoredLikes()
-    return MOCK_TRACKS.filter((t) => likedIds.includes(t.id)).map((t) => ({
+    const allTracks = await this.getQuickPicks()
+    return allTracks.filter((t) => likedIds.includes(t.id)).map((t) => ({
       ...t,
       isLiked: true,
     }))
@@ -320,7 +283,7 @@ export const musicService = {
       id: `playlist-${Date.now()}`,
       title: data.title,
       description: data.description || '',
-      coverUrl: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&auto=format&fit=crop&q=80',
+      coverUrl: 'https://oshoworld.com/uploads/adhyatma-upanishad-osho.jpg',
       userId: 'user-me',
       userName: 'You',
       isPublic: true,
