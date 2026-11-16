@@ -1,66 +1,230 @@
-import { Metadata } from "next"
-import { Button } from "components/Button/Button"
+'use client'
 
-import { LP_GRID_ITEMS } from "lp-items"
+import React, { useState, useEffect } from 'react'
+import { musicService } from '../services/musicService'
+import { Track, Artist, Album, Playlist } from '../types/music'
+import { FeaturedBanner } from '../components/music/FeaturedBanner'
+import { MusicCard } from '../components/music/MusicCard'
+import { AlbumCard } from '../components/music/AlbumCard'
+import { ArtistCard } from '../components/music/ArtistCard'
+import { PlaylistCard } from '../components/music/PlaylistCard'
+import { TrackRow } from '../components/music/TrackRow'
+import { MusicCarousel } from '../components/music/MusicCarousel'
+import { usePlayerStore } from '../stores/usePlayerStore'
+import { Play } from 'lucide-react'
+import { cn } from '../lib/utils'
 
-export const metadata: Metadata = {
-  title: "Next.js Enterprise Boilerplate",
-  twitter: {
-    card: "summary_large_image",
-  },
-  openGraph: {
-    url: "https://next-enterprise.vercel.app/",
-    images: [
-      {
-        width: 1200,
-        height: 630,
-        url: "https://raw.githubusercontent.com/Blazity/next-enterprise/main/.github/assets/project-logo.png",
-      },
-    ],
-  },
-}
+export default function HomePage() {
+  const [selectedMood, setSelectedMood] = useState('All')
+  const [moods, setMoods] = useState<string[]>([])
+  const [featured, setFeatured] = useState<any>(null)
+  const [quickPicks, setQuickPicks] = useState<Track[]>([])
+  const [trending, setTrending] = useState<Track[]>([])
+  const [albums, setAlbums] = useState<Album[]>([])
+  const [artists, setArtists] = useState<Artist[]>([])
+  const [playlists, setPlaylists] = useState<Playlist[]>([])
+  const [isLoading, setIsLoading] = useState(true)
 
-export default function Web() {
+  const { playTrack } = usePlayerStore()
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const [
+          moodData,
+          featData,
+          quickData,
+          trendData,
+          albumData,
+          artistData,
+          playlistData,
+        ] = await Promise.all([
+          musicService.getMoodCategories(),
+          musicService.getFeatured(),
+          musicService.getQuickPicks(),
+          musicService.getTrending(),
+          musicService.getNewReleases(),
+          musicService.getPopularArtists(),
+          musicService.getPlaylists(),
+        ])
+
+        setMoods(moodData)
+        setFeatured(featData)
+        setQuickPicks(quickData)
+        setTrending(trendData)
+        setAlbums(albumData)
+        setArtists(artistData)
+        setPlaylists(playlistData)
+      } catch (err) {
+        console.error('Failed to load home music data', err)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+    loadData()
+  }, [])
+
+  // Filter tracks by mood if not All
+  const displayedQuickPicks = quickPicks.filter((t) => {
+    if (selectedMood === 'All') return true
+    if (selectedMood === 'Focus' || selectedMood === 'Relax') {
+      return t.genres?.includes('chill')
+    }
+    if (selectedMood === 'Energize' || selectedMood === 'Workout' || selectedMood === 'Party') {
+      return t.genres?.includes('electronic') || t.genres?.includes('pop')
+    }
+    return true
+  })
+
+  const handlePlayQuickAll = () => {
+    if (displayedQuickPicks.length > 0) {
+      playTrack(displayedQuickPicks[0]!, displayedQuickPicks)
+    }
+  }
+
+  const handlePlayTrendingAll = () => {
+    if (trending.length > 0) {
+      playTrack(trending[0]!, trending)
+    }
+  }
+
+  if (isLoading) {
+    return (
+      <div className="space-y-8 animate-pulse select-none">
+        <div className="h-10 w-full max-w-md bg-neutral-800/40 rounded-full" />
+        <div className="h-80 w-full bg-neutral-800/40 rounded-3xl" />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {[1, 2, 3, 4].map((i) => (
+            <div key={i} className="aspect-square bg-neutral-800/40 rounded-2xl" />
+          ))}
+        </div>
+      </div>
+    )
+  }
+
   return (
-    <>
-      <section className="bg-white dark:bg-gray-900">
-        <div className="mx-auto grid max-w-(--breakpoint-xl) px-4 py-8 text-center lg:py-16">
-          <div className="mx-auto place-self-center">
-            <h1 className="mb-4 max-w-2xl text-4xl leading-none font-extrabold tracking-tight md:text-5xl xl:text-6xl dark:text-white">
-              Next.js Enterprise Boilerplate
-            </h1>
-            <p className="mb-6 max-w-2xl font-light text-gray-500 md:text-lg lg:mb-8 lg:text-xl dark:text-gray-400">
-              Jumpstart your enterprise project with our feature-packed, high-performance Next.js boilerplate!
-              Experience rapid UI development, AI-powered code reviews, and an extensive suite of tools for a smooth and
-              enjoyable development process.
-            </p>
-            <Button href="https://github.com/Blazity/next-enterprise" className="mr-3">
-              Get started
-            </Button>
-            <Button
-              href="https://vercel.com/new/git/external?repository-url=https://github.com/Blazity/next-enterprise"
-              intent="secondary"
+    <div className="space-y-6 pb-12 select-none">
+      {/* Mood Filter Chips Carousel */}
+      <div className="flex items-center gap-2 overflow-x-auto no-scrollbar -mx-4 px-4 md:-mx-8 md:px-8 pb-1 pt-1">
+        {moods.map((mood) => {
+          const isSelected = selectedMood === mood
+          return (
+            <button
+              key={mood}
+              type="button"
+              onClick={() => setSelectedMood(mood)}
+              className={cn(
+                'px-4 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all shrink-0 cursor-pointer',
+                isSelected
+                  ? 'bg-white text-black shadow-md'
+                  : 'bg-neutral-800/80 text-neutral-300 hover:bg-neutral-700 hover:text-white'
+              )}
             >
-              Deploy Now
-            </Button>
+              {mood}
+            </button>
+          )
+        })}
+      </div>
+
+      {/* Featured Banner Hero */}
+      {featured && <FeaturedBanner banner={featured.banner} />}
+
+      {/* Quick Picks - YouTube Music 4-row grid */}
+      <section className="my-8">
+        <div className="flex items-end justify-between mb-4">
+          <div>
+            <h2 className="text-xl md:text-2xl font-bold tracking-tight text-white">
+              Quick picks
+            </h2>
+            <p className="text-xs md:text-sm text-neutral-400 mt-0.5">
+              Listen to the songs you love right away
+            </p>
           </div>
+
+          <button
+            type="button"
+            onClick={handlePlayQuickAll}
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-neutral-800/80 hover:bg-neutral-700 text-white text-xs font-semibold transition"
+          >
+            <Play className="w-3.5 h-3.5 fill-current" />
+            <span>Play all</span>
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
+          {displayedQuickPicks.slice(0, 8).map((track, idx) => (
+            <TrackRow
+              key={track.id}
+              track={track}
+              index={idx}
+              queue={displayedQuickPicks}
+              variant="compact"
+            />
+          ))}
         </div>
       </section>
-      <section className="bg-white dark:bg-gray-900">
-        <div className="mx-auto max-w-(--breakpoint-xl) px-4 py-8 sm:py-16 lg:px-6">
-          <div className="justify-center space-y-8 md:grid md:grid-cols-2 md:gap-12 md:space-y-0 lg:grid-cols-3">
-            {LP_GRID_ITEMS.map((singleItem) => (
-              <div key={singleItem.title} className="flex flex-col items-center justify-center text-center">
-                <div className="bg-primary-100 dark:bg-primary-900 mb-4 flex size-10 items-center justify-center rounded-full p-1.5 text-blue-700 lg:size-12">
-                  {singleItem.icon}
-                </div>
-                <h3 className="mb-2 text-xl font-bold dark:text-white">{singleItem.title}</h3>
-                <p className="text-gray-500 dark:text-gray-400">{singleItem.description}</p>
-              </div>
-            ))}
+
+      {/* Recommended for You Carousel */}
+      <MusicCarousel
+        title="Recommended for You"
+        subtitle="Curated tracks matching your recent listening taste"
+        onPlayAll={handlePlayQuickAll}
+      >
+        {quickPicks.map((track) => (
+          <div key={track.id} className="w-48 shrink-0">
+            <MusicCard track={track} queue={quickPicks} />
           </div>
-        </div>
-      </section>
-    </>
+        ))}
+      </MusicCarousel>
+
+      {/* Trending Music */}
+      <MusicCarousel
+        title="Trending on NAD Music"
+        subtitle="Chartbusters with millions of streams"
+        onPlayAll={handlePlayTrendingAll}
+      >
+        {trending.map((track) => (
+          <div key={track.id} className="w-48 shrink-0">
+            <MusicCard track={track} queue={trending} />
+          </div>
+        ))}
+      </MusicCarousel>
+
+      {/* Popular Albums */}
+      <MusicCarousel
+        title="Popular Albums & EPs"
+        subtitle="Top studio albums streaming now"
+      >
+        {albums.map((album) => (
+          <div key={album.id} className="w-48 shrink-0">
+            <AlbumCard album={album} />
+          </div>
+        ))}
+      </MusicCarousel>
+
+      {/* Popular Artists */}
+      <MusicCarousel
+        title="Top Artists"
+        subtitle="Most followed voices on NAD Music"
+      >
+        {artists.map((artist) => (
+          <div key={artist.id} className="w-44 shrink-0">
+            <ArtistCard artist={artist} />
+          </div>
+        ))}
+      </MusicCarousel>
+
+      {/* Featured Playlists */}
+      <MusicCarousel
+        title="Featured Playlists"
+        subtitle="Handpicked by music editors"
+      >
+        {playlists.map((playlist) => (
+          <div key={playlist.id} className="w-48 shrink-0">
+            <PlaylistCard playlist={playlist} />
+          </div>
+        ))}
+      </MusicCarousel>
+    </div>
   )
 }
