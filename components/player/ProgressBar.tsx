@@ -15,13 +15,10 @@ export function ProgressBar({
   currentTime,
   duration,
   onSeek,
-  variant = 'bottom',
 }: ProgressBarProps) {
   const [hoverTime, setHoverTime] = useState<number | null>(null)
   const [hoverPosition, setHoverPosition] = useState<number>(0)
   const progressBarRef = useRef<HTMLDivElement>(null)
-
-  const progress = duration > 0 ? (currentTime / duration) * 100 : 0
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!progressBarRef.current || duration <= 0) return
