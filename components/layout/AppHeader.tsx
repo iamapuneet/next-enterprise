@@ -113,7 +113,7 @@ export function AppHeader({ onToggleSidebar }: AppHeaderProps) {
               <div className="px-3 py-2 border-b border-white/5 mb-1">
                 <p className="font-semibold text-sm truncate">Puneet</p>
                 <p className="text-xs text-neutral-400 truncate">puneet@oshovani.com</p>
-                <div className="mt-2 inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-400 text-[11px] font-medium border border-amber-500/20">
+                <div className="mt-2 inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#FF4B4B]/15 text-[#FF4B4B] text-[11px] font-medium border border-[#FF4B4B]/20">
                   <Sparkles className="w-3 h-3" />
                   Oshovani Member
                 </div>

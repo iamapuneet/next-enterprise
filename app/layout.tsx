@@ -163,7 +163,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-[#0E0E0E] text-white antialiased selection:bg-amber-500 selection:text-black overflow-x-hidden">
+      <body className="bg-[#0E0E0E] text-white antialiased selection:bg-[#FF4B4B] selection:text-white overflow-x-hidden">
         <AppShell>{children}</AppShell>
       </body>
     </html>
