@@ -50,7 +50,7 @@ export function PlaylistCard({ playlist }: PlaylistCardProps) {
             {playlist.title}
           </h3>
           <p className="text-xs text-neutral-400 truncate mt-0.5">
-            Playlist • {playlist.userName || 'Osho World'} • {playlist.trackCount ?? (playlist.tracks?.length || 0)} discourses
+            Playlist • {playlist.userName || 'Oshovani'} • {playlist.trackCount ?? (playlist.tracks?.length || 0)} discourses
           </p>
         </div>
       </Link>

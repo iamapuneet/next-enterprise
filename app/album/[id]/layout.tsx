@@ -8,10 +8,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { id } = await params
   const series = await oshoApiService.getSeries(id)
-  const title = series?.title ? `${series.title} — Osho Audio Discourse Series` : 'Osho Discourse Series'
+  const title = series?.title ? `${series.title} — Oshovani` : 'Discourse Series — Oshovani'
   const description =
     series?.description ||
-    `Listen to complete original audio discourses by Osho on ${series?.title || 'spirituality and meditation'}.`
+    `Listen to complete original audio discourses by Osho on ${series?.title || 'spirituality and meditation'} on Oshovani.`
 
   return {
     title,

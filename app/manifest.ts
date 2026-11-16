@@ -2,10 +2,10 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Osho Player — Audio Discourses & Meditation',
-    short_name: 'Osho Player',
+    name: 'Oshovani — Audio Discourses & Meditation',
+    short_name: 'Oshovani',
     description:
-      'High-fidelity streaming platform for 160+ audio discourses by Osho with ambient background sound integration.',
+      'High-fidelity spiritual streaming platform for 160+ audio discourses by Osho with ambient background sound integration.',
     start_url: '/',
     display: 'standalone',
     background_color: '#0E0E0E',

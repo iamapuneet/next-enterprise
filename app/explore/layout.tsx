@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Explore Osho Discourses — Master Categories, Upanishad & Geeta',
+  title: 'Explore Discourses on Oshovani — Master Categories, Upanishad & Geeta',
   description:
-    'Browse complete collections of discourses categorized into 16 master themes: Krishna, Shiva, Kabir, Upanishad, Ashtavakra, Zen, Buddha, and Nanak with original Hindi audio streaming.',
+    'Browse complete collections of discourses categorized into 16 master themes on Oshovani: Krishna, Shiva, Kabir, Upanishad, Ashtavakra, Zen, Buddha, and Nanak with original Hindi audio streaming.',
   openGraph: {
-    title: 'Explore Osho Audio Discourses & Master Categories',
+    title: 'Explore Osho Audio Discourses on Oshovani',
     description:
       'Search and browse discourse series by category: Upanishad, Geeta, Kabir, Zen, and Dhyan.',
   },

@@ -15,15 +15,16 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(APP_URL),
   title: {
-    default: 'Osho Player — Audio Discourses, Upanishads, Gita & Meditation',
-    template: '%s | Osho Player',
+    default: 'Oshovani (ओशोवाणी) — Audio Discourses, Upanishads, Gita & Meditation',
+    template: '%s | Oshovani',
   },
   description:
-    'Experience the complete catalog of 160+ audio discourse series by enlightened mystic Osho. Stream Adhyatam Upanishad, Ashtavakra Maha Geeta, Zen, Sufi, and Kabir discourses in studio quality with ambient background soundtrack accompaniment.',
+    'Experience the complete catalog of 160+ audio discourse series on Oshovani (ओशोवाणी). Stream Adhyatam Upanishad, Ashtavakra Maha Geeta, Zen, Sufi, and Kabir discourses in studio quality with ambient background soundtrack accompaniment.',
   keywords: [
+    'Oshovani',
+    'ओशोवाणी',
     'Osho',
     'Osho World',
-    'Osho Player',
     'Osho Discourses',
     'Osho Audio',
     'Hindi Pravachan',
@@ -38,9 +39,9 @@ export const metadata: Metadata = {
     'Osho Audio Series Hindi',
     'Hans Zimmer Ambient Music',
   ],
-  authors: [{ name: 'Osho World', url: 'https://oshoworld.com' }],
-  creator: 'Osho World',
-  publisher: 'Osho World Foundation',
+  authors: [{ name: 'Oshovani', url: 'https://oshoworld.com' }],
+  creator: 'Oshovani',
+  publisher: 'Oshovani Foundation',
   formatDetection: {
     email: false,
     address: false,
@@ -54,26 +55,26 @@ export const metadata: Metadata = {
     locale: 'hi_IN',
     alternateLocale: ['en_US'],
     url: APP_URL,
-    siteName: 'Osho Player — World of Consciousness',
-    title: 'Osho Player — Audio Discourses & Meditation',
+    siteName: 'Oshovani — World of Consciousness',
+    title: 'Oshovani (ओशोवाणी) — Audio Discourses & Meditation',
     description:
-      'Stream over 160+ complete multi-part discourse series by Osho, accompanied by subtle ambient music for enhanced dhyan and meditation.',
+      'Stream over 160+ complete multi-part discourse series by Osho on Oshovani, accompanied by subtle ambient music for enhanced dhyan and meditation.',
     images: [
       {
         url: 'https://oshoworld.com/uploads/adhyatma-upanishad-osho.jpg',
         width: 1200,
         height: 630,
-        alt: 'Osho Player — Audio Discourses and Meditation',
+        alt: 'Oshovani — Audio Discourses and Meditation',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Osho Player — Audio Discourses & Meditation',
+    title: 'Oshovani — Audio Discourses & Meditation',
     description:
-      'Listen to authentic audio discourses by Osho on Upanishad, Geeta, and Zen with ambient sound integration.',
+      'Listen to authentic audio discourses by Osho on Upanishad, Geeta, and Zen with ambient sound integration on Oshovani.',
     images: ['https://oshoworld.com/uploads/adhyatma-upanishad-osho.jpg'],
-    creator: '@oshoworld',
+    creator: '@oshovani',
   },
   robots: {
     index: true,
@@ -96,11 +97,12 @@ const jsonLd = {
       '@type': 'WebSite',
       '@id': `${APP_URL}/#website`,
       url: APP_URL,
-      name: 'Osho Player',
+      name: 'Oshovani',
+      alternateName: 'ओशोवाणी',
       description: 'Online streaming platform for audio discourses by Osho.',
       publisher: {
         '@type': 'Organization',
-        name: 'Osho World Foundation',
+        name: 'Oshovani Foundation',
         url: 'https://oshoworld.com',
         logo: {
           '@type': 'ImageObject',
@@ -128,7 +130,7 @@ const jsonLd = {
       '@type': 'AudioObject',
       '@id': `${APP_URL}/#featured-audio`,
       name: 'Adhyatam Upanishad 01',
-      description: 'Original Hindi audio discourse on Adhyatam Upanishad by Osho.',
+      description: 'Original Hindi audio discourse on Adhyatam Upanishad by Osho on Oshovani.',
       duration: 'PT1H56M17S',
       contentUrl: 'https://oshoworld.com/wp-content/uploads/2020/11/Hindi%20Audio/OSHO-Adhyatam_Upanishad_01.mp3',
       thumbnailUrl: 'https://oshoworld.com/uploads/adhyatma-upanishad-osho.jpg',
