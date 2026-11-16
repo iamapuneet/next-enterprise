@@ -15,17 +15,17 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const { currentTrack } = usePlayerStore()
 
   return (
-    <div className="relative min-h-screen bg-[#0E0E0E] text-white flex flex-col">
+    <div className="relative h-screen w-screen bg-[#0E0E0E] text-white overflow-hidden flex flex-col">
       {/* Persistent Sidebar */}
       <AppSidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
-      {/* Main Content Area */}
-      <div className="flex-1 md:pl-[240px] flex flex-col min-h-screen pb-[80px]">
+      {/* Main Content Area - scrolls independently while sidebar and bottom player remain fixed */}
+      <div className="flex-1 md:pl-[240px] h-[calc(100vh-76px)] flex flex-col overflow-hidden">
         {/* Sticky Header */}
         <AppHeader onToggleSidebar={() => setSidebarOpen((prev) => !prev)} />
 
         {/* Dynamic Page Content */}
-        <main className="flex-1 px-4 md:px-8 py-4 overflow-y-auto">
+        <main className="flex-1 overflow-y-auto px-4 md:px-8 py-6">
           {children}
         </main>
       </div>
