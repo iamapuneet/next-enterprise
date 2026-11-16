@@ -7,6 +7,7 @@ import {
   MOOD_CATEGORIES,
 } from '../data/mockMusicData'
 import { Track, Artist, Album, Playlist, Genre } from '../types/music'
+import { oshoApiService, OSHO_ARTIST } from './oshoApiService'
 
 // In-memory / localStorage state persistence for client interactions
 const getStoredLikes = (): string[] => {
@@ -78,6 +79,22 @@ export const musicService = {
       track: Track
     }
   }> {
+    const oshoTracks = await oshoApiService.getFeaturedTracks()
+    const oshoFirst = oshoTracks[0]
+
+    if (oshoFirst) {
+      return {
+        banner: {
+          title: 'Adhyatam Upanishad (अध्यात्म उपनिषद्)',
+          subtitle: 'Featured Discourse • Spiritual & Meditation',
+          description: 'ॐ, शं नो मित्रः शं वरुणः... Deep dive into the timeless wisdom of the Upanishads with Osho.',
+          coverUrl: oshoFirst.coverUrl,
+          artistName: 'Osho (ओशो)',
+          track: oshoFirst,
+        },
+      }
+    }
+
     return {
       banner: {
         title: 'Neon Horizon — Deluxe Edition',
@@ -96,25 +113,28 @@ export const musicService = {
 
   async getQuickPicks(): Promise<Track[]> {
     const likes = getStoredLikes()
-    return MOCK_TRACKS.map((t) => ({
+    const oshoTracks = await oshoApiService.getFeaturedTracks()
+
+    const combined = [...oshoTracks, ...MOCK_TRACKS]
+    return combined.map((t) => ({
       ...t,
       isLiked: likes.includes(t.id),
     }))
   },
 
   async getTrending(): Promise<Track[]> {
-    const likes = getStoredLikes()
-    return [...MOCK_TRACKS]
-      .sort((a, b) => (b.playCount ?? 0) - (a.playCount ?? 0))
-      .map((t) => ({ ...t, isLiked: likes.includes(t.id) }))
+    const all = await this.getQuickPicks()
+    return [...all].sort((a, b) => (b.playCount ?? 0) - (a.playCount ?? 0))
   },
 
   async getNewReleases(): Promise<Album[]> {
-    return MOCK_ALBUMS
+    const oshoSeries = await oshoApiService.getSeriesList()
+    const featuredOshoSeries = oshoSeries.slice(0, 6)
+    return [...featuredOshoSeries, ...MOCK_ALBUMS]
   },
 
   async getPopularArtists(): Promise<Artist[]> {
-    return MOCK_ARTISTS
+    return [OSHO_ARTIST, ...MOCK_ARTISTS]
   },
 
   async getPlaylists(): Promise<Playlist[]> {
@@ -123,11 +143,27 @@ export const musicService = {
 
   // Explore & Categories
   async getGenres(): Promise<Genre[]> {
-    return MOCK_GENRES
+    const oshoGenre: Genre = {
+      id: 'spiritual',
+      name: 'Osho Discourses',
+      color: '#B45309',
+      imageUrl: 'https://oshoworld.com/uploads/adhyatma-upanishad-osho.jpg',
+    }
+    return [oshoGenre, ...MOCK_GENRES]
   },
 
   // Details
   async getArtistById(id: string): Promise<Artist | null> {
+    if (id === 'artist-osho' || id === 'osho') {
+      const oshoTracks = await oshoApiService.getFeaturedTracks()
+      const oshoSeries = await oshoApiService.getSeriesList()
+      return {
+        ...OSHO_ARTIST,
+        tracks: oshoTracks,
+        albums: oshoSeries.slice(0, 12),
+      }
+    }
+
     const artist = MOCK_ARTISTS.find((a) => a.id === id) || MOCK_ARTISTS[0]!
     const tracks = (await this.getQuickPicks()).filter((t) => t.artistId === artist.id || t.artistName === artist.name)
     const albums = MOCK_ALBUMS.filter((al) => al.artistId === artist.id || al.artistName === artist.name)
@@ -140,6 +176,12 @@ export const musicService = {
   },
 
   async getAlbumById(id: string): Promise<Album | null> {
+    // Check if it's an Osho Series
+    const oshoSeries = await oshoApiService.getSeries(id)
+    if (oshoSeries) {
+      return oshoSeries
+    }
+
     const album = MOCK_ALBUMS.find((a) => a.id === id) || MOCK_ALBUMS[0]!
     const tracks = (await this.getQuickPicks()).filter((t) => t.albumId === album.id)
     const albumTracks = tracks.length > 0 ? tracks : (await this.getQuickPicks()).slice(0, 4)
@@ -183,13 +225,15 @@ export const musicService = {
   }> {
     const q = query.trim().toLowerCase()
     const allTracks = await this.getQuickPicks()
+    const allAlbums = await this.getNewReleases()
+    const allArtists = await this.getPopularArtists()
     const allPlaylists = getStoredPlaylists()
 
     if (!q) {
       return {
-        songs: allTracks.slice(0, 5),
-        albums: MOCK_ALBUMS,
-        artists: MOCK_ARTISTS,
+        songs: allTracks.slice(0, 8),
+        albums: allAlbums,
+        artists: allArtists,
         playlists: allPlaylists,
       }
     }
@@ -201,13 +245,13 @@ export const musicService = {
         (t.albumTitle && t.albumTitle.toLowerCase().includes(q))
     )
 
-    const filteredAlbums = MOCK_ALBUMS.filter(
+    const filteredAlbums = allAlbums.filter(
       (al) =>
         al.title.toLowerCase().includes(q) ||
         (al.artistName && al.artistName.toLowerCase().includes(q))
     )
 
-    const filteredArtists = MOCK_ARTISTS.filter((ar) =>
+    const filteredArtists = allArtists.filter((ar) =>
       ar.name.toLowerCase().includes(q)
     )
 
