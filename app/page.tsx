@@ -178,7 +178,7 @@ export default function HomePage() {
 
       {/* Trending Music */}
       <MusicCarousel
-        title="Trending on Osho Player"
+        title="Trending on Oshovani"
         subtitle="Most listened Hindi and English discourses"
         onPlayAll={handlePlayTrendingAll}
       >
@@ -192,7 +192,7 @@ export default function HomePage() {
       {/* Popular Discourse Series */}
       <MusicCarousel
         title="Complete Discourse Series"
-        subtitle="Full multi-part discourses from Osho World"
+        subtitle="Full multi-part discourses from Oshovani"
       >
         {albums.map((album) => (
           <div key={album.id} className="w-48 shrink-0">

@@ -10,8 +10,8 @@ import {
   Sun,
   Shield,
   Sparkles,
-  Music2,
 } from 'lucide-react'
+import { OshoLogo } from '../../components/common/OshoLogo'
 
 export default function SettingsPage() {
   const [audioQuality, setAudioQuality] = useState('high')

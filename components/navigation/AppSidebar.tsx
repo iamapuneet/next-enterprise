@@ -77,7 +77,7 @@ export function AppSidebar({ isOpen = true, onClose }: AppSidebarProps) {
             </div>
             <div className="flex flex-col">
               <span className="font-bold tracking-tight text-white text-base leading-none">
-                OSHO <span className="text-amber-400">Player</span>
+                Osho<span className="text-amber-400">vani</span>
               </span>
               <span className="text-[10px] tracking-wider text-amber-200/60 uppercase mt-0.5 font-medium">
                 Discourses & Dhyan

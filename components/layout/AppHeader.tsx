@@ -48,7 +48,7 @@ export function AppHeader({ onToggleSidebar }: AppHeaderProps) {
 
         <Link href="/" className="flex items-center gap-2 md:hidden">
           <OshoLogo size={26} />
-          <span className="font-bold text-white text-sm tracking-tight">OSHO</span>
+          <span className="font-bold text-white text-sm tracking-tight">Oshovani</span>
         </Link>
       </div>
 
@@ -112,10 +112,10 @@ export function AppHeader({ onToggleSidebar }: AppHeaderProps) {
             >
               <div className="px-3 py-2 border-b border-white/5 mb-1">
                 <p className="font-semibold text-sm truncate">Puneet</p>
-                <p className="text-xs text-neutral-400 truncate">puneet@oshoworld.com</p>
-                <div className="mt-2 inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#FF4B4B]/15 text-[#FF4B4B] text-[11px] font-medium">
+                <p className="text-xs text-neutral-400 truncate">puneet@oshovani.com</p>
+                <div className="mt-2 inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-400 text-[11px] font-medium border border-amber-500/20">
                   <Sparkles className="w-3 h-3" />
-                  Osho Discourses Member
+                  Oshovani Member
                 </div>
               </div>
 
@@ -142,8 +142,8 @@ export function AppHeader({ onToggleSidebar }: AppHeaderProps) {
               <DropdownMenu.Separator className="h-px bg-white/5 my-1" />
 
               <DropdownMenu.Item
-                onClick={() => alert('Osho Player account signed in.')}
-                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-[#FF4B4B] hover:bg-neutral-800 cursor-pointer transition outline-hidden"
+                onClick={() => alert('Oshovani account signed in.')}
+                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-neutral-300 hover:text-white hover:bg-neutral-800 cursor-pointer transition outline-hidden"
               >
                 <LogOut className="w-4 h-4" />
                 Sign Out
